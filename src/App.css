@@ -81,6 +81,20 @@
     background: url("../public/images/tempatemo_menu_hover.png") no-repeat left bottom;
 }*/
 
+.sidebar_box {
+    padding-left: 30px;
+}
+
+.side_box {
+    margin-bottom: 20px;
+    padding: 10px 0 20px 5px;
+    border-bottom: 1px solid;
+}
+
+.side_box:hover {
+   background: #132b31;
+}
+
 .content {
     flex: 1 1 auto;
 }

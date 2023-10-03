@@ -28,7 +28,6 @@ function App() {
                             <h3>Подзаголовок</h3>
                             <div className="side_box">что-то здесь</div>
                             <div className="side_box">и здесь...</div>
-                            <div className="side_box">...и здесь</div>
                         </div>
                     </div>
                     <div className="content">
