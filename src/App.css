@@ -1,42 +1,34 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+.wrapper {
+    width: 990px;
+    margin: 0 auto;
+    background: url("../public/images/templatemo_wrapper.png") repeat-y;
+}
+.header {
+    width: 990px;
+    height: 200px;
+    padding: 0 10px;
+    background: url("../public/images/templatemo_header.png") no-repeat;
+}
+.header .site_title {
+    width: 260px;
+    text-align: center;
+    padding: 80px 0 0 20px;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.header .site_title a {
+    margin: 0;
+    padding: 0;
+    font-size: 30px;
+    color: #ffffff;
+    font-weight: normal;
+    text-decoration: none;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+.header .site_title a span {
+    display: block;
+    text-align: right;
+    font-size: 14px;
+    color: #5f6675;
+    font-weight: bold;
+    letter-spacing: 2px;
 }
