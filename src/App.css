@@ -2,13 +2,19 @@
     width: 990px;
     margin: 0 auto;
     background: url("../public/images/templatemo_wrapper.png") repeat-y;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
+
 .header {
     width: 990px;
     height: 200px;
     padding: 0 10px;
     background: url("../public/images/templatemo_header.png") no-repeat;
+    flex-shrink: 0;
 }
+
 .header .site_title {
     width: 260px;
     text-align: center;
@@ -31,4 +37,54 @@
     color: #5f6675;
     font-weight: bold;
     letter-spacing: 2px;
+}
+
+.main {
+    flex-grow: 1;
+    display: flex;
+    padding: 60px 40px 30px 10px;
+    background: url("../public/images/templatemo_content_top.png") no-repeat;
+}
+
+.sidebar {
+    flex: 0 0 280px;
+}
+
+.menu {
+    margin-bottom: 50px;
+}
+
+.menu ul li {
+    padding: 0;
+    margin: 0 0 5px 0;
+}
+
+.menu ul li a {
+    display: block;
+    height: 25px;
+    padding: 11px 0 30px 30px;
+    font-size: 14px;
+    text-decoration: none;
+    color: #ccc;
+    font-weight: bold;
+    outline: none;
+    background: url("../public/images/templatemo_menu.png") no-repeat left bottom;
+}
+
+.menu li a:hover {
+    color: #fff;
+    background: url("../public/images/tempatemo_menu_hover.png") no-repeat left bottom;
+}
+
+/*.current {
+    color: #fff;
+    background: url("../public/images/tempatemo_menu_hover.png") no-repeat left bottom;
+}*/
+
+.content {
+    flex: 1 1 auto;
+}
+
+.footer {
+    flex-shrink: 0;
 }

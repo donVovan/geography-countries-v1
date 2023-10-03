@@ -64,11 +64,6 @@ body {
 body._lock {
   overflow: hidden;
 }
-
-.wrapper {
-  min-height: 100%;
-}
-
 /*--------------------*/
 
 
