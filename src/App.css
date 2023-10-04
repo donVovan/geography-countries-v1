@@ -98,7 +98,20 @@
 .content {
     flex: 1 1 auto;
 }
+.content_container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.column_left {
+
+}
+
+.column_right {
+
+}
 
 .footer {
     flex-shrink: 0;
+    text-align: center;
 }
