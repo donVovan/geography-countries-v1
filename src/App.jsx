@@ -1,46 +1,20 @@
 import './App.css'
+import Header from "./Header.jsx";
+import Sidebar from "./Sidebar.jsx";
+import Content from "./Content.jsx";
+import Footer from "./Footer.jsx";
 
 function App() {
 
     return (
         <div className="null">
             <div className="wrapper">
-                <header className="header">
-                    <div className="site_title">
-                        <a href={"/"}>
-                            <img src="../public/images/title.png" alt="Logo"/><span>now I know more</span>
-                        </a>
-                    </div>
-                </header>
+                <Header />
                 <main className="main">
-                    <div className="sidebar">
-                        <div className="menu">
-                            <ul>
-                                <li><a href={"/"}>Европа</a></li>
-                                <li><a href={"/"}>Азия</a></li>
-                                <li><a href={"/"}>Северная Америка</a></li>
-                                <li><a href={"/"}>Южная Америка</a></li>
-                                <li><a href={"/"}>Африка</a></li>
-                                <li><a href={"/"}>Австралия и Океания</a></li>
-                            </ul>
-                        </div>
-                        <div className="sidebar_box">
-                            <h3>Подзаголовок</h3>
-                            <div className="side_box">что-то здесь</div>
-                            <div className="side_box">и здесь...</div>
-                        </div>
-                    </div>
-                    <div className="content">
-                        <h1>самый главный заголовок</h1>
-                        <div className="content_container">
-                            <div className="column_left">Колонка слева</div>
-                            <div className="column_right">Колонка справа</div>
-                        </div>
-                    </div>
+                    <Sidebar />
+                    <Content />
                 </main>
-                <footer className="footer">
-                    <p><a href={"/"}>какая-то ссылка</a></p>
-                </footer>
+                <Footer />
 
 
             </div>
