@@ -32,7 +32,10 @@ function Container() {
             <Sidebar
                 renderMenu={renderMenu}
             />
-            <Content/>
+            <Content
+                continentsData={continentsData}
+                selectedContinent={selectedContinent}
+            />
         </main>
         <Footer/>
     </>
