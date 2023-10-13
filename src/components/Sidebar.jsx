@@ -1,17 +1,8 @@
-import React from "react";
-
-function Sidebar() {
+function Sidebar({renderMenu}) {
     return (
         <div className="sidebar">
             <div className="menu">
-                <ul>
-                    <li><a href={"/"}>Европа</a></li>
-                    <li><a href={"/"}>Азия</a></li>
-                    <li><a href={"/"}>Северная Америка</a></li>
-                    <li><a href={"/"}>Южная Америка</a></li>
-                    <li><a href={"/"}>Африка</a></li>
-                    <li><a href={"/"}>Австралия и Океания</a></li>
-                </ul>
+                {renderMenu()}
             </div>
             <div className="sidebar_box">
                 <h3>Подзаголовок</h3>
