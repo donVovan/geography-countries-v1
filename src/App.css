@@ -60,7 +60,7 @@
     cursor: pointer;
 }
 
-.menu ul li a {
+.menu ul li > a {
     display: block;
     height: 25px;
     padding: 11px 0 30px 30px;

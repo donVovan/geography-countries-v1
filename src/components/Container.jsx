@@ -15,8 +15,10 @@ function Container() {
     function renderMenu() {
         return <ul>
             {Object.keys(continentsData).map((continent) => (
-                <li key={continent} onClick={() => handleCountrie(continent)}>
-                    {continent}
+                <li key={continent}>
+                    <a onClick={() => handleCountrie(continent)}>
+                        {continent}
+                    </a>
                 </li>
             ))}
         </ul>
@@ -28,7 +30,7 @@ function Container() {
         <Header/>
         <main className="main">
             <Sidebar
-            renderMenu={renderMenu}
+                renderMenu={renderMenu}
             />
             <Content/>
         </main>
