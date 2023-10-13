@@ -1,8 +1,8 @@
 import './App.css'
-import Header from "./Header.jsx";
-import Sidebar from "./Sidebar.jsx";
-import Content from "./Content.jsx";
-import Footer from "./Footer.jsx";
+import Header from "./components/Header.jsx";
+import Sidebar from "./components/Sidebar.jsx";
+import Content from "./components/Content.jsx";
+import Footer from "./components/Footer.jsx";
 
 function App() {
 
