@@ -112,6 +112,10 @@
 
 }
 
+.column_right img {
+    max-width: 200px;
+}
+
 .footer {
     flex-shrink: 0;
     text-align: center;

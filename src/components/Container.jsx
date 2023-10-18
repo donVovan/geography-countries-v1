@@ -16,6 +16,21 @@ function Container() {
         setSelectedCountries(Object.keys(continentsData[value].countries))
     }
 
+    function renderColumnImage() {
+        let pathToImage = "../../public/images/continents/"
+        if (selectedContinent !== null){
+            let str = selectedContinent;
+            if (str.includes(" ")){
+                str = str.replace(/ /g, "_");
+            }
+            pathToImage = pathToImage + str + ".png"
+            return <div>
+                <img src={pathToImage}/>
+            </div>
+        }
+
+    }
+
     function renderColumnCountries() {
         if (selectedContinent === null) {
             return <p>Здесь будет список стран континента</p>
@@ -53,6 +68,7 @@ function Container() {
                 continentsData={continentsData}
                 selectedContinent={selectedContinent}
                 renderColumnCountries={renderColumnCountries}
+                renderColumnImage={renderColumnImage}
             />
         </main>
         <Footer/>
