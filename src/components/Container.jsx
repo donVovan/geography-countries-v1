@@ -8,15 +8,25 @@ import {useState} from "react";
 function Container() {
     const [selectedContinent, setSelectedContinent] = useState(null);
 
-    function handleCountrie(value) {
+    // const eur = ["Austria", "Belarus"]
+
+    function handleContinent(value) {
         setSelectedContinent(value);
+        // console.log(selectedContinent)
+        console.log(continentsData[selectedContinent].countries)
+    }
+
+    function renderColumnCountries() {
+        if (selectedContinent === null) {
+            return <p>Здесь будет список стран континента</p>
+        }
     }
 
     function renderMenu() {
         return <ul>
             {Object.keys(continentsData).map((continent) => (
                 <li key={continent}>
-                    <a onClick={() => handleCountrie(continent)}>
+                    <a onClick={() => handleContinent(continent)}>
                         {continent}
                     </a>
                 </li>
@@ -35,6 +45,7 @@ function Container() {
             <Content
                 continentsData={continentsData}
                 selectedContinent={selectedContinent}
+                renderColumnCountries={renderColumnCountries}
             />
         </main>
         <Footer/>
