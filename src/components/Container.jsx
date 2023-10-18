@@ -2,23 +2,31 @@ import Header from "./Header.jsx";
 import Sidebar from "./Sidebar.jsx";
 import Content from "./Content.jsx";
 import Footer from "./Footer.jsx";
-import continentsData from "../bd/continents.json"
+import continentsData from "../bd/gc.json"
 import {useState} from "react";
 
 function Container() {
     const [selectedContinent, setSelectedContinent] = useState(null);
+    const [selectedCountries, setSelectedCountries] = useState([]);
 
-    // const eur = ["Austria", "Belarus"]
+    //console.log(Object.keys(continentsData["Europe"].countries))
 
     function handleContinent(value) {
         setSelectedContinent(value);
-        // console.log(selectedContinent)
-        console.log(continentsData[selectedContinent].countries)
+        setSelectedCountries(Object.keys(continentsData[value].countries))
     }
 
     function renderColumnCountries() {
         if (selectedContinent === null) {
             return <p>Здесь будет список стран континента</p>
+        } else {
+           return <ul>
+                {selectedCountries.map((country) => (
+                    <li key={country}>
+                        {country}
+                    </li>
+                ))}
+            </ul>
         }
     }
 
@@ -34,7 +42,6 @@ function Container() {
         </ul>
     }
 
-    //console.log(continentsData.Europe.id)
 
     return <>
         <Header/>
