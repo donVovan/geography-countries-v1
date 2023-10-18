@@ -7,7 +7,7 @@ import {useState} from "react";
 
 function Container() {
     const [selectedContinent, setSelectedContinent] = useState(null);
-    const [selectedCountries, setSelectedCountries] = useState([]);
+    const [selectedCountries, setSelectedCountries] = useState(null);
 
     //console.log(Object.keys(continentsData["Europe"].countries))
 
