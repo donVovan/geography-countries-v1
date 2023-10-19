@@ -8,9 +8,9 @@ import {useState} from "react";
 function Container() {
     const [selectedContinent, setSelectedContinent] = useState(null);
     const [selectedCountries, setSelectedCountries] = useState(null);
+    const [selectedCountrie, setSelectedCountrie] = useState(null);
     const [selectedCities, setSelectedCities] = useState(null);
 
-    //console.log(Object.keys(continentsData["Europe"].countries))
 
     function renderMenu() {
         return <ul>
@@ -32,6 +32,18 @@ function Container() {
 
 
     function renderColumnCountries() {
+        if (selectedContinent !== null && selectedCities !== null) {
+            return <ul>
+                {selectedCities.map((city) => (
+                    <li key={city}>
+                        {/*<a onClick={() => handleCity(city)}>
+                            {city}
+                        </a>*/}
+                        {city}
+                    </li>
+                ))}
+            </ul>
+        }
         if (selectedContinent !== null) {
             return <ul>
                 {selectedCountries.map((country) => (
@@ -42,9 +54,8 @@ function Container() {
                     </li>
                 ))}
             </ul>
-        } else if (selectedCities !== null){
-
         }
+
     }
 
     function renderColumnImage() {
@@ -63,12 +74,28 @@ function Container() {
     }
 
     function handleCountrie(value) {
-        setSelectedCountries(value);
+        //console.log(selectedContinent)
+        //console.log(value)
+        //console.log(selectedCountries)
+        //setSelectedCountries(value);
+        setSelectedCountrie(value);
+        //setSelectedCities(Object.keys(continentsData[selectedContinent].countries[value].cities))
+        //console.log(Object.keys(continentsData[selectedContinent].countries[value].cities))
+        setSelectedCities(Object.keys(continentsData[selectedContinent].countries[value].cities))
     }
+
+    //console.log(selectedCountries)
+    //console.log(Object.keys(continentsData[selectedContinent].countries["Austria"].cities))
+    //console.log(Object.keys(continentsData[selectedContinent]))
+
+    // function handleCity(value) {
+    //     setSelectedCities(value);
+    // }
 
     function handleContinent(value) {
         setSelectedContinent(value);
         setSelectedCountries(Object.keys(continentsData[value].countries))
+        setSelectedCities(null)
     }
 
     return <>
@@ -81,7 +108,7 @@ function Container() {
                 continentsData={continentsData}
                 selectedContinent={selectedContinent}
                 renderColumnImage={renderColumnImage}
-                handleCountrie={handleCountrie}
+                //handleCountrie={handleCountrie}
                 renderColumnLeft={renderColumnLeft}
             />
         </main>
