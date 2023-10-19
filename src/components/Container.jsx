@@ -8,42 +8,9 @@ import {useState} from "react";
 function Container() {
     const [selectedContinent, setSelectedContinent] = useState(null);
     const [selectedCountries, setSelectedCountries] = useState(null);
+    const [selectedCities, setSelectedCities] = useState(null);
 
     //console.log(Object.keys(continentsData["Europe"].countries))
-
-    function handleContinent(value) {
-        setSelectedContinent(value);
-        setSelectedCountries(Object.keys(continentsData[value].countries))
-    }
-
-    function renderColumnImage() {
-        let pathToImage = "../../public/images/continents/"
-        if (selectedContinent !== null){
-            let str = selectedContinent;
-            if (str.includes(" ")){
-                str = str.replace(/ /g, "_");
-            }
-            pathToImage = pathToImage + str + ".png"
-            return <div>
-                <img src={pathToImage}/>
-            </div>
-        }
-
-    }
-
-    function renderColumnCountries() {
-        if (selectedContinent === null) {
-            return <p>Здесь будет список стран континента</p>
-        } else {
-           return <ul>
-                {selectedCountries.map((country) => (
-                    <li key={country}>
-                        {country}
-                    </li>
-                ))}
-            </ul>
-        }
-    }
 
     function renderMenu() {
         return <ul>
@@ -57,6 +24,50 @@ function Container() {
         </ul>
     }
 
+    function renderColumnLeft() {
+        return <div className="column_left">
+            {renderColumnCountries()}
+        </div>
+    }
+
+
+    function renderColumnCountries() {
+        if (selectedContinent !== null) {
+            return <ul>
+                {selectedCountries.map((country) => (
+                    <li key={country}>
+                        <a onClick={() => handleCountrie(country)}>
+                            {country}
+                        </a>
+                    </li>
+                ))}
+            </ul>
+        }
+    }
+
+    function renderColumnImage() {
+        let pathToImage = "../images/continents/"
+        if (selectedContinent !== null) {
+            let str = selectedContinent;
+            if (str.includes(" ")) {
+                str = str.replace(/ /g, "_");
+            }
+            pathToImage = pathToImage + str + ".png"
+            return <div>
+                <img src={pathToImage}/>
+            </div>
+        }
+
+    }
+
+    function handleCountrie(value) {
+        setSelectedCountries(value);
+    }
+
+    function handleContinent(value) {
+        setSelectedContinent(value);
+        setSelectedCountries(Object.keys(continentsData[value].countries))
+    }
 
     return <>
         <Header/>
@@ -67,8 +78,9 @@ function Container() {
             <Content
                 continentsData={continentsData}
                 selectedContinent={selectedContinent}
-                renderColumnCountries={renderColumnCountries}
                 renderColumnImage={renderColumnImage}
+                handleCountrie={handleCountrie}
+                renderColumnLeft={renderColumnLeft}
             />
         </main>
         <Footer/>

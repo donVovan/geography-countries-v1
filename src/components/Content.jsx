@@ -1,4 +1,4 @@
-function Content({selectedContinent, renderColumnCountries, renderColumnImage}) {
+function Content({selectedContinent, renderColumnImage, handleCountrie, renderColumnLeft}) {
     //console.log(selectedContinent)
     //console.log(continentsData)
     // <img src="../../public/images/continents/Europe.png"/>
@@ -8,9 +8,7 @@ function Content({selectedContinent, renderColumnCountries, renderColumnImage}) 
         <div className="content">
             <h1>{selectedContinent === null ? "выбери континент" : selectedContinent}</h1>
             <div className="content_container">
-                <div className="column_left">
-                    {renderColumnCountries()}
-                </div>
+                {renderColumnLeft()}
                 <div className="column_right">
                     {renderColumnImage()}
                 </div>
