@@ -1,7 +1,7 @@
 .wrapper {
     width: 990px;
     margin: 0 auto;
-    background: url("../public/images/wrapper.png") repeat-y;
+    background: url("../images/wrapper.png") repeat-y;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -11,7 +11,7 @@
     width: 990px;
     height: 200px;
     padding: 0 10px;
-    background: url("../public/images/header.png") no-repeat;
+    background: url("../images/header.png") no-repeat;
     flex-shrink: 0;
 }
 
@@ -43,7 +43,7 @@
     flex-grow: 1;
     display: flex;
     padding: 60px 40px 30px 10px;
-    background: url("../public/images/content_top.png") no-repeat;
+    background: url("../images/content_top.png") no-repeat;
 }
 
 .sidebar {
@@ -69,12 +69,12 @@
     color: #ccc;
     font-weight: bold;
     outline: none;
-    background: url("../public/images/menu.png") no-repeat left bottom;
+    background: url("../images/menu.png") no-repeat left bottom;
 }
 
 .menu li a:hover {
     color: #fff;
-    background: url("../public/images/menu_hover.png") no-repeat left bottom;
+    background: url("../images/menu_hover.png") no-repeat left bottom;
 }
 
 /*.current {

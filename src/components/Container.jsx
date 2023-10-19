@@ -42,6 +42,8 @@ function Container() {
                     </li>
                 ))}
             </ul>
+        } else if (selectedCities !== null){
+
         }
     }
 
