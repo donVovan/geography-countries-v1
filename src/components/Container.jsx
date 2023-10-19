@@ -36,10 +36,9 @@ function Container() {
             return <ul>
                 {selectedCities.map((city) => (
                     <li key={city}>
-                        {/*<a onClick={() => handleCity(city)}>
+                        <a onClick={() => handleCity(city)}>
                             {city}
-                        </a>*/}
-                        {city}
+                        </a>
                     </li>
                 ))}
             </ul>
