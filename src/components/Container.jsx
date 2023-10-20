@@ -98,7 +98,7 @@ function Container() {
             let pathToImage = "../images/countries/";
             let str = selectedCountrie;
             if (str.includes(" ")) {
-                str = str.replace(/ /g, "_");
+                str = str.replace(/\s/g, "_");
             }
             pathToImage = pathToImage + str + ".png"
             return <div>
@@ -109,7 +109,7 @@ function Container() {
             let pathToImage = "../images/continents/";
             let str = selectedContinent;
             if (str.includes(" ")) {
-                str = str.replace(/ /g, "_");
+                str = str.replace(/\s/g, "_");
             }
             pathToImage = pathToImage + str + ".png"
             return <div>
