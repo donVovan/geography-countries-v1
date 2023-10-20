@@ -10,6 +10,12 @@ function Container() {
     const [selectedCountries, setSelectedCountries] = useState(null);
     const [selectedCountrie, setSelectedCountrie] = useState(null);
     const [selectedCities, setSelectedCities] = useState(null);
+    const [selectedCity, setSelectedCity] = useState(null);
+    const [cityId, setCityId] = useState(0);
+    const [population, setPopulation] = useState('')
+    const [area, setArea] = useState('')
+    const [foundation, setFoundation] = useState('')
+    const [shortInfo, setShortInfo] = useState('')
 
 
     function renderMenu() {
@@ -27,7 +33,7 @@ function Container() {
     function renderTitle() {
         if (selectedContinent !== null && selectedCountrie !== null) {
             return <h1>{selectedCountrie}</h1>
-        } else if (selectedContinent !== null){
+        } else if (selectedContinent !== null) {
             return <h1>{selectedContinent}</h1>
         } else {
             return <h1>Привет</h1>
@@ -43,6 +49,25 @@ function Container() {
 
 
     function renderColumnCountries() {
+        if (selectedContinent !== null && selectedCities !== null && selectedCity !== null) {
+            return <div  key={cityId}>
+                <h3>{selectedCity}</h3>
+                <ul>
+                    <li>
+                        Population: {population} people
+                    </li>
+                    <li>
+                        Area: {area} km<sup>2</sup>
+                    </li>
+                    <li>
+                        Year of foundation: {foundation}
+                    </li>
+                    <li>
+                        {shortInfo}
+                    </li>
+                </ul>
+            </div>
+        }
         if (selectedContinent !== null && selectedCities !== null) {
             return <ul>
                 {selectedCities.map((city) => (
@@ -69,7 +94,7 @@ function Container() {
     }
 
     function renderColumnImage() {
-        if (selectedContinent !== null && selectedCountrie !== null){
+        if (selectedContinent !== null && selectedCountrie !== null) {
             let pathToImage = "../images/countries/";
             let str = selectedCountrie;
             if (str.includes(" ")) {
@@ -92,6 +117,16 @@ function Container() {
             </div>
         }
 
+    }
+
+    function handleCity(value) {
+        setSelectedCity(value);
+        setCityId((continentsData[selectedContinent].countries[selectedCountrie].cities[value].id))
+        setPopulation((continentsData[selectedContinent].countries[selectedCountrie].cities[value].population))
+        setArea((continentsData[selectedContinent].countries[selectedCountrie].cities[value].area))
+        setFoundation((continentsData[selectedContinent].countries[selectedCountrie].cities[value].foundation))
+        setShortInfo((continentsData[selectedContinent].countries[selectedCountrie].cities[value].shortInfo))
+        //console.log((continentsData[selectedContinent].countries[selectedCountrie].cities[value].id))
     }
 
     function handleCountrie(value) {
@@ -118,6 +153,7 @@ function Container() {
         setSelectedCountries(Object.keys(continentsData[value].countries))
         setSelectedCities(null);
         setSelectedCountrie(null);
+        setSelectedCity(null);
     }
 
     return <>
