@@ -1,12 +1,10 @@
-function Content({selectedContinent, renderColumnImage, handleCountrie, renderColumnLeft}) {
-    //console.log(selectedContinent)
-    //console.log(continentsData)
-    // <img src="../../public/images/continents/Europe.png"/>
+// eslint-disable-next-line react/prop-types
+function Content({renderColumnImage, renderColumnLeft, renderTitle}) {
 
 
     return (
         <div className="content">
-            <h1>{selectedContinent === null ? "выбери континент" : selectedContinent}</h1>
+            <h1>{renderTitle()}</h1>
             <div className="content_container">
                 {renderColumnLeft()}
                 <div className="column_right">

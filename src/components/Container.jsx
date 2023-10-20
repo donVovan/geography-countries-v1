@@ -24,6 +24,17 @@ function Container() {
         </ul>
     }
 
+    function renderTitle() {
+        if (selectedContinent !== null && selectedCountrie !== null) {
+            return <h1>{selectedCountrie}</h1>
+        } else if (selectedContinent !== null){
+            return <h1>{selectedContinent}</h1>
+        } else {
+            return <h1>Привет</h1>
+        }
+
+    }
+
     function renderColumnLeft() {
         return <div className="column_left">
             {renderColumnCountries()}
@@ -121,6 +132,7 @@ function Container() {
                 renderColumnImage={renderColumnImage}
                 //handleCountrie={handleCountrie}
                 renderColumnLeft={renderColumnLeft}
+                renderTitle={renderTitle}
             />
         </main>
         <Footer/>
