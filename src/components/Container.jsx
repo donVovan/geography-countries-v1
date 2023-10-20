@@ -58,15 +58,26 @@ function Container() {
     }
 
     function renderColumnImage() {
-        let pathToImage = "../images/continents/"
+        if (selectedContinent !== null && selectedCountrie !== null){
+            let pathToImage = "../images/countries/";
+            let str = selectedCountrie;
+            if (str.includes(" ")) {
+                str = str.replace(/ /g, "_");
+            }
+            pathToImage = pathToImage + str + ".png"
+            return <div>
+                <img alt="флаг" src={pathToImage}/>
+            </div>
+        }
         if (selectedContinent !== null) {
+            let pathToImage = "../images/continents/";
             let str = selectedContinent;
             if (str.includes(" ")) {
                 str = str.replace(/ /g, "_");
             }
             pathToImage = pathToImage + str + ".png"
             return <div>
-                <img src={pathToImage}/>
+                <img alt="глобус" src={pathToImage}/>
             </div>
         }
 
@@ -94,7 +105,8 @@ function Container() {
     function handleContinent(value) {
         setSelectedContinent(value);
         setSelectedCountries(Object.keys(continentsData[value].countries))
-        setSelectedCities(null)
+        setSelectedCities(null);
+        setSelectedCountrie(null);
     }
 
     return <>
