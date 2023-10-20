@@ -163,10 +163,7 @@ function Container() {
                 renderMenu={renderMenu}
             />
             <Content
-                continentsData={continentsData}
-                selectedContinent={selectedContinent}
                 renderColumnImage={renderColumnImage}
-                //handleCountrie={handleCountrie}
                 renderColumnLeft={renderColumnLeft}
                 renderTitle={renderTitle}
             />
