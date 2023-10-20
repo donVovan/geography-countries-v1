@@ -79,18 +79,13 @@ li {
     background: url("../images/menu_hover.png") no-repeat left bottom;
 }
 
-/*.current {
-    color: #fff;
-    background: url("../public/images/menu_hover.png") no-repeat left bottom;
-}*/
-
 .sidebar_box {
     padding-left: 30px;
 }
 
 .side_box {
-    margin-bottom: 20px;
-    padding: 10px 0 20px 5px;
+    margin:0 5px 20px 0;
+    padding: 10px 5px 20px 5px;
     border-bottom: 1px solid;
 }
 
