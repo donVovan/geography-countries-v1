@@ -17,6 +17,21 @@ function Container() {
     const [foundation, setFoundation] = useState('')
     const [shortInfo, setShortInfo] = useState('')
 
+    function renderSidebarInfo() {
+        if (selectedContinent !== null) {
+            return <div className="sidebar_box">
+                <h3>Подзаголовок</h3>
+                <div className="side_box">Population: {population} people</div>
+                <div className="side_box">Area: {area}</div>
+            </div>
+        } else {
+            return <div className="sidebar_box">
+                <h3>Подзаголовок</h3>
+                <div className="side_box">что-то здесь</div>
+                <div className="side_box">и здесь...</div>
+            </div>
+        }
+    }
 
     function renderMenu() {
         return <ul>
@@ -50,22 +65,14 @@ function Container() {
 
     function renderColumnCountries() {
         if (selectedContinent !== null && selectedCities !== null && selectedCity !== null) {
-            return <div  key={cityId}>
+            return <div key={cityId}>
                 <h3>{selectedCity}</h3>
-                <ul>
-                    <li>
-                        Population: {population} people
-                    </li>
-                    <li>
-                        Area: {area} km<sup>2</sup>
-                    </li>
-                    <li>
-                        Year of foundation: {foundation}
-                    </li>
-                    <li>
-                        {shortInfo}
-                    </li>
-                </ul>
+                <h5>
+                    Year of foundation: {foundation}
+                </h5>
+                <p>
+                    {shortInfo}
+                </p>
             </div>
         }
         if (selectedContinent !== null && selectedCities !== null) {
@@ -138,6 +145,8 @@ function Container() {
         //setSelectedCities(Object.keys(continentsData[selectedContinent].countries[value].cities))
         //console.log(Object.keys(continentsData[selectedContinent].countries[value].cities))
         setSelectedCities(Object.keys(continentsData[selectedContinent].countries[value].cities))
+        setPopulation(continentsData[selectedContinent].population)
+        setPopulation(continentsData[selectedContinent].area)
     }
 
     //console.log(selectedCountries)
@@ -151,9 +160,12 @@ function Container() {
     function handleContinent(value) {
         setSelectedContinent(value);
         setSelectedCountries(Object.keys(continentsData[value].countries))
+        setPopulation(continentsData[value].population)
+        setArea(continentsData[value].area)
         setSelectedCities(null);
         setSelectedCountry(null);
         setSelectedCity(null);
+        //console.log(continentsData[value].population)
     }
 
     return <>
@@ -161,6 +173,7 @@ function Container() {
         <main className="main">
             <Sidebar
                 renderMenu={renderMenu}
+                renderSidebarInfo={renderSidebarInfo}
             />
             <Content
                 renderColumnImage={renderColumnImage}
