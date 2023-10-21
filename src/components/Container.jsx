@@ -20,13 +20,11 @@ function Container() {
     function renderSidebarInfo() {
         if (selectedContinent !== null) {
             return <div className="sidebar_box">
-                <h3>Подзаголовок</h3>
                 <div className="side_box">Population: {population} people</div>
                 <div className="side_box">Area: {area}</div>
             </div>
         } else {
             return <div className="sidebar_box">
-                <h3>Подзаголовок</h3>
                 <div className="side_box">что-то здесь</div>
                 <div className="side_box">и здесь...</div>
             </div>
@@ -101,6 +99,17 @@ function Container() {
     }
 
     function renderColumnImage() {
+        if (selectedContinent !== null && selectedCountry !== null && selectedCity !==null) {
+            let pathToImage = "../images/cities/";
+            let str = selectedCity;
+            if (str.includes(" ")) {
+                str = str.replace(/\s/g, "_");
+            }
+            pathToImage = pathToImage + str + ".png"
+            return <div>
+                <img alt="photo" src={pathToImage}/>
+            </div>
+        }
         if (selectedContinent !== null && selectedCountry !== null) {
             let pathToImage = "../images/countries/";
             let str = selectedCountry;
