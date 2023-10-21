@@ -8,7 +8,7 @@ import {useState} from "react";
 function Container() {
     const [selectedContinent, setSelectedContinent] = useState(null);
     const [selectedCountries, setSelectedCountries] = useState(null);
-    const [selectedCountrie, setSelectedCountrie] = useState(null);
+    const [selectedCountry, setSelectedCountry] = useState(null);
     const [selectedCities, setSelectedCities] = useState(null);
     const [selectedCity, setSelectedCity] = useState(null);
     const [cityId, setCityId] = useState(0);
@@ -31,8 +31,8 @@ function Container() {
     }
 
     function renderTitle() {
-        if (selectedContinent !== null && selectedCountrie !== null) {
-            return <h1>{selectedCountrie}</h1>
+        if (selectedContinent !== null && selectedCountry !== null) {
+            return <h1>{selectedCountry}</h1>
         } else if (selectedContinent !== null) {
             return <h1>{selectedContinent}</h1>
         } else {
@@ -94,9 +94,9 @@ function Container() {
     }
 
     function renderColumnImage() {
-        if (selectedContinent !== null && selectedCountrie !== null) {
+        if (selectedContinent !== null && selectedCountry !== null) {
             let pathToImage = "../images/countries/";
-            let str = selectedCountrie;
+            let str = selectedCountry;
             if (str.includes(" ")) {
                 str = str.replace(/\s/g, "_");
             }
@@ -121,11 +121,11 @@ function Container() {
 
     function handleCity(value) {
         setSelectedCity(value);
-        setCityId((continentsData[selectedContinent].countries[selectedCountrie].cities[value].id))
-        setPopulation((continentsData[selectedContinent].countries[selectedCountrie].cities[value].population))
-        setArea((continentsData[selectedContinent].countries[selectedCountrie].cities[value].area))
-        setFoundation((continentsData[selectedContinent].countries[selectedCountrie].cities[value].foundation))
-        setShortInfo((continentsData[selectedContinent].countries[selectedCountrie].cities[value].shortInfo))
+        setCityId((continentsData[selectedContinent].countries[selectedCountry].cities[value].id))
+        setPopulation((continentsData[selectedContinent].countries[selectedCountry].cities[value].population))
+        setArea((continentsData[selectedContinent].countries[selectedCountry].cities[value].area))
+        setFoundation((continentsData[selectedContinent].countries[selectedCountry].cities[value].foundation))
+        setShortInfo((continentsData[selectedContinent].countries[selectedCountry].cities[value].shortInfo))
         //console.log((continentsData[selectedContinent].countries[selectedCountrie].cities[value].id))
     }
 
@@ -134,7 +134,7 @@ function Container() {
         //console.log(value)
         //console.log(selectedCountries)
         //setSelectedCountries(value);
-        setSelectedCountrie(value);
+        setSelectedCountry(value);
         //setSelectedCities(Object.keys(continentsData[selectedContinent].countries[value].cities))
         //console.log(Object.keys(continentsData[selectedContinent].countries[value].cities))
         setSelectedCities(Object.keys(continentsData[selectedContinent].countries[value].cities))
@@ -152,7 +152,7 @@ function Container() {
         setSelectedContinent(value);
         setSelectedCountries(Object.keys(continentsData[value].countries))
         setSelectedCities(null);
-        setSelectedCountrie(null);
+        setSelectedCountry(null);
         setSelectedCity(null);
     }
 
