@@ -18,7 +18,7 @@ function Container() {
         }
     );*/
 
-    const [selectedContinents, setSelectedContinents] = useState([]);
+    const [selectedContinents, setSelectedContinents] = useState(null);
     const [selectedContinent, setSelectedContinent] = useState(null);
     const [selectedCountries, setSelectedCountries] = useState(null);
     const [selectedCountry, setSelectedCountry] = useState(null);
@@ -36,29 +36,23 @@ function Container() {
     }, []);
 
     async function fetchData() {
+        const response = await fetch('http://localhost:3002/test/');
+        const data = await response.json();
+        return setJsonData(data);
+    }
 
-            const response = await fetch('http://localhost:3002/test/');
-            const data = await response.json();
-            setJsonData(data);
+
+      function setContinentsMenu() {
+        if (jsonData){
+            setSelectedContinents(Object.keys.jsonData)
+        }
+
+        console.log(jsonData)
 
     }
 
-  /*  function setContinentsMenu() {
-
-            //console.log(Object.keys(jsonData[0]))
-            setSelectedContinents(Object.keys(jsonData[0]))
-            /!*Object.keys(jsonData[0]).map((continent) => {
-
-                    console.log(continent)
-                }
-            )*!/
-
-
-    }
-
-    //setContinentsMenu()
-    console.log(selectedContinents)*/
-
+   console.log(jsonData)
+    console.log(selectedContinents)
 
     function renderSidebarInfo() {
         if (selectedContinent !== null) {
