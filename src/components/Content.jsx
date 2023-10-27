@@ -4,7 +4,7 @@ function Content({renderColumnImage, renderColumnLeft, renderTitle}) {
 
     return (
         <div className="content">
-            <h1>{renderTitle()}</h1>
+            {renderTitle()}
             <div className="content_container">
                 {renderColumnLeft()}
                 <div className="column_right">
