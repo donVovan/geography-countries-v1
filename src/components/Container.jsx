@@ -3,9 +3,21 @@ import Sidebar from "./Sidebar.jsx";
 import Content from "./Content.jsx";
 import Footer from "./Footer.jsx";
 import continentsData from "../bd/gc.json"
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 function Container() {
+
+    /*fetch('http://localhost:3002/test/').then(
+        response => {
+            return response.text();
+        }
+    ).then(
+        text => {
+            console.log(text); // текст страницы
+
+        }
+    );*/
+
     const [selectedContinent, setSelectedContinent] = useState(null);
     const [selectedCountries, setSelectedCountries] = useState(null);
     const [selectedCountry, setSelectedCountry] = useState(null);
@@ -16,6 +28,23 @@ function Container() {
     const [area, setArea] = useState('')
     const [foundation, setFoundation] = useState('')
     const [shortInfo, setShortInfo] = useState('')
+    const [jsonData, setJsonData] = useState('')
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+
+    async function fetchData() {
+        try {
+            const response = await fetch('http://localhost:3002/test/');
+            const data = await response.json();
+            setJsonData(data);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+
 
     function renderSidebarInfo() {
         if (selectedContinent !== null) {
@@ -175,6 +204,8 @@ function Container() {
         setSelectedCountry(null);
         setSelectedCity(null);
         //console.log(continentsData[value].population)
+        //console.log(Object.keys(jsonData[value]))
+        console.log(jsonData)
     }
 
     return <>
