@@ -145,7 +145,7 @@ function Container() {
             return <ul>
                 {selectedCountries.map((country) => (
                     <li key={country}>
-                        <a onClick={() => handleCountrie(country)}>
+                        <a onClick={() => handleCountry(country)}>
                             {country}
                         </a>
                     </li>
@@ -193,35 +193,26 @@ function Container() {
     }
 
     function handleCity(value) {
-        setSelectedCity(value);
-        setCityId((continentsData[selectedContinent].countries[selectedCountry].cities[value].id))
-        setPopulation((continentsData[selectedContinent].countries[selectedCountry].cities[value].population))
-        setArea((continentsData[selectedContinent].countries[selectedCountry].cities[value].area))
-        setFoundation((continentsData[selectedContinent].countries[selectedCountry].cities[value].foundation))
-        setShortInfo((continentsData[selectedContinent].countries[selectedCountry].cities[value].shortInfo))
-        //console.log((continentsData[selectedContinent].countries[selectedCountrie].cities[value].id))
+        if (selectedCountry !== null){
+            setSelectedCity(value);
+            setCityId((continentsData[selectedContinent].countries[selectedCountry].cities[value].id))
+            setPopulation((continentsData[selectedContinent].countries[selectedCountry].cities[value].population))
+            setArea((continentsData[selectedContinent].countries[selectedCountry].cities[value].area))
+            setFoundation((continentsData[selectedContinent].countries[selectedCountry].cities[value].foundation))
+            setShortInfo((continentsData[selectedContinent].countries[selectedCountry].cities[value].shortInfo))
+            //console.log((continentsData[selectedContinent].countries[selectedCountrie].cities[value].id))
+        }
     }
 
-    function handleCountrie(value) {
-        //console.log(selectedContinent)
-        //console.log(value)
-        //console.log(selectedCountries)
-        //setSelectedCountries(value);
-        setSelectedCountry(value);
-        //setSelectedCities(Object.keys(continentsData[selectedContinent].countries[value].cities))
-        //console.log(Object.keys(continentsData[selectedContinent].countries[value].cities))
-        setSelectedCities(Object.keys(continentsData[selectedContinent].countries[value].cities))
-        setPopulation(continentsData[selectedContinent].population)
-        setPopulation(continentsData[selectedContinent].area)
+    function handleCountry(value) {
+        if (selectedContinent !== null){
+            setSelectedCountry(value);
+            setSelectedCities(Object.keys(jsonData[0].continents[selectedContinent].countries[value].cities))
+            setPopulation(jsonData[0].continents[selectedContinent].countries[value].population)
+            setArea(jsonData[0].continents[selectedContinent].countries[value].area)
+        }
+
     }
-
-    //console.log(selectedCountries)
-    //console.log(Object.keys(continentsData[selectedContinent].countries["Austria"].cities))
-    //console.log(Object.keys(continentsData[selectedContinent]))
-
-    // function handleCity(value) {
-    //     setSelectedCities(value);
-    // }
 
     function handleContinent(value) {
         if (selectedContinents !== null){
