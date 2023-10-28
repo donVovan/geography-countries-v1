@@ -224,16 +224,15 @@ function Container() {
     // }
 
     function handleContinent(value) {
-        setSelectedContinent(value);
-        setSelectedCountries(Object.keys(continentsData[value].countries))
-        setPopulation(continentsData[value].population)
-        setArea(continentsData[value].area)
-        setSelectedCities(null);
-        setSelectedCountry(null);
-        setSelectedCity(null);
-        //console.log(continentsData[value].population)
-        //console.log(Object.keys(jsonData[value]))
-        //console.log(Object.keys(jsonData[0].continents))
+        if (selectedContinents !== null){
+            setSelectedContinent(value);
+            setSelectedCountries(Object.keys(jsonData[0].continents[value].countries))
+            setPopulation(jsonData[0].continents[value].population)
+            setArea(jsonData[0].continents[value].area)
+            setSelectedCities(null);
+            setSelectedCountry(null);
+            setSelectedCity(null);
+        }
     }
 
     return <>
