@@ -33,25 +33,26 @@ function Container() {
 
     useEffect(() => {
         fetchData();
-        setContinents()
     }, []);
 
     async function fetchData() {
         const response = await fetch('http://localhost:3002/test/');
         const data = await response.json();
-        await setJsonData(data);
-
-
+        setJsonData(data);
     }
 
+    useEffect(()=>{
+        setContinents()
+    }, [jsonData]);
+
     function setContinents() {
-        if (jsonData != null){
-            setSelectedContinents(Object.keys(jsonData[0].continents))
+        if (jsonData){
+          setSelectedContinents(Object.keys(jsonData[0].continents))
         }
     }
 
     //console.log(Object.keys(jsonData[0].continents))
-    console.log(selectedContinents)
+    //selectedContinents.map(continent => console.log(continent))
 
 
   /*  function setContinentsMenu() {
@@ -80,18 +81,23 @@ function Container() {
         }
     }
 
+
+
     function renderMenu() {
        //console.log(Object.keys(jsonData[0].continents))
        // console.log(selectedContinents)
-        return <ul>
-            {Object.keys(continentsData).map((continent) => (
-                <li key={continent}>
-                    <a onClick={() => handleContinent(continent)}>
-                        {continent}
-                    </a>
-                </li>
-            ))}
-        </ul>
+        if (selectedContinents !== null){
+            return <ul>
+                {selectedContinents.map((continent) => (
+                    <li key={continent}>
+                        <a onClick={() => handleContinent(continent)}>
+                            {continent}
+                        </a>
+                    </li>
+                ))}
+            </ul>
+        }
+
     }
 
     function renderTitle() {
@@ -227,7 +233,7 @@ function Container() {
         setSelectedCity(null);
         //console.log(continentsData[value].population)
         //console.log(Object.keys(jsonData[value]))
-        //console.log(jsonData)
+        //console.log(Object.keys(jsonData[0].continents))
     }
 
     return <>
