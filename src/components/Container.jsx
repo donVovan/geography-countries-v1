@@ -45,12 +45,13 @@ function Container() {
     }
 
     function setContinents() {
-        if (jsonData){
+        if (jsonData != null){
             setSelectedContinents(Object.keys(jsonData[0].continents))
         }
     }
 
-    //console.log(selectedContinents)
+    //console.log(Object.keys(jsonData[0].continents))
+    console.log(selectedContinents)
 
 
   /*  function setContinentsMenu() {
@@ -81,9 +82,9 @@ function Container() {
 
     function renderMenu() {
        //console.log(Object.keys(jsonData[0].continents))
-        //console.log(selectedContinents)
+       // console.log(selectedContinents)
         return <ul>
-            {selectedContinents.map((continent) => (
+            {Object.keys(continentsData).map((continent) => (
                 <li key={continent}>
                     <a onClick={() => handleContinent(continent)}>
                         {continent}
