@@ -33,26 +33,37 @@ function Container() {
 
     useEffect(() => {
         fetchData();
+        setContinents()
     }, []);
 
     async function fetchData() {
         const response = await fetch('http://localhost:3002/test/');
         const data = await response.json();
-        return setJsonData(data);
+        await setJsonData(data);
+
+
     }
 
-
-      function setContinentsMenu() {
+    function setContinents() {
         if (jsonData){
+            setSelectedContinents(Object.keys(jsonData[0].continents))
+        }
+    }
+
+    //console.log(selectedContinents)
+
+
+  /*  function setContinentsMenu() {
+        if (jsonData) {
             setSelectedContinents(Object.keys.jsonData)
         }
 
         console.log(jsonData)
 
-    }
+    }*/
 
-   console.log(jsonData)
-    console.log(selectedContinents)
+    //console.log(jsonData)
+    //console.log(selectedContinents)
 
     function renderSidebarInfo() {
         if (selectedContinent !== null) {
@@ -69,8 +80,10 @@ function Container() {
     }
 
     function renderMenu() {
+       //console.log(Object.keys(jsonData[0].continents))
+        //console.log(selectedContinents)
         return <ul>
-            {Object.keys(continentsData).map((continent) => (
+            {selectedContinents.map((continent) => (
                 <li key={continent}>
                     <a onClick={() => handleContinent(continent)}>
                         {continent}
@@ -136,7 +149,7 @@ function Container() {
     }
 
     function renderColumnImage() {
-        if (selectedContinent !== null && selectedCountry !== null && selectedCity !==null) {
+        if (selectedContinent !== null && selectedCountry !== null && selectedCity !== null) {
             let pathToImage = "../images/cities/";
             let str = selectedCity;
             if (str.includes(" ")) {
