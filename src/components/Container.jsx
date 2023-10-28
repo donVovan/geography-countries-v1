@@ -2,21 +2,9 @@ import Header from "./Header.jsx";
 import Sidebar from "./Sidebar.jsx";
 import Content from "./Content.jsx";
 import Footer from "./Footer.jsx";
-import continentsData from "../bd/gc.json"
 import {useEffect, useState} from "react";
 
 function Container() {
-
-    /*fetch('http://localhost:3002/test/').then(
-        response => {
-            return response.text();
-        }
-    ).then(
-        text => {
-            console.log(text); // текст страницы
-
-        }
-    );*/
 
     const [selectedContinents, setSelectedContinents] = useState(null);
     const [selectedContinent, setSelectedContinent] = useState(null);
@@ -51,22 +39,6 @@ function Container() {
         }
     }
 
-    //console.log(Object.keys(jsonData[0].continents))
-    //selectedContinents.map(continent => console.log(continent))
-
-
-  /*  function setContinentsMenu() {
-        if (jsonData) {
-            setSelectedContinents(Object.keys.jsonData)
-        }
-
-        console.log(jsonData)
-
-    }*/
-
-    //console.log(jsonData)
-    //console.log(selectedContinents)
-
     function renderSidebarInfo() {
         if (selectedContinent !== null) {
             return <div className="sidebar_box">
@@ -84,8 +56,6 @@ function Container() {
 
 
     function renderMenu() {
-       //console.log(Object.keys(jsonData[0].continents))
-       // console.log(selectedContinents)
         if (selectedContinents !== null){
             return <ul>
                 {selectedContinents.map((continent) => (
@@ -195,12 +165,11 @@ function Container() {
     function handleCity(value) {
         if (selectedCountry !== null){
             setSelectedCity(value);
-            setCityId((continentsData[selectedContinent].countries[selectedCountry].cities[value].id))
-            setPopulation((continentsData[selectedContinent].countries[selectedCountry].cities[value].population))
-            setArea((continentsData[selectedContinent].countries[selectedCountry].cities[value].area))
-            setFoundation((continentsData[selectedContinent].countries[selectedCountry].cities[value].foundation))
-            setShortInfo((continentsData[selectedContinent].countries[selectedCountry].cities[value].shortInfo))
-            //console.log((continentsData[selectedContinent].countries[selectedCountrie].cities[value].id))
+            setCityId((jsonData[0].continents[selectedContinent].countries[selectedCountry].cities[value].id))
+            setPopulation((jsonData[0].continents[selectedContinent].countries[selectedCountry].cities[value].population))
+            setArea((jsonData[0].continents[selectedContinent].countries[selectedCountry].cities[value].area))
+            setFoundation((jsonData[0].continents[selectedContinent].countries[selectedCountry].cities[value].foundation))
+            setShortInfo((jsonData[0].continents[selectedContinent].countries[selectedCountry].cities[value].shortInfo))
         }
     }
 
