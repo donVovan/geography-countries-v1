@@ -45,11 +45,6 @@ function Container() {
                 <div className="side_box">Population: {population} people</div>
                 <div className="side_box">Area: {area}</div>
             </div>
-        } else {
-            return <div className="sidebar_box">
-                <div className="side_box">что-то здесь</div>
-                <div className="side_box">и здесь...</div>
-            </div>
         }
     }
 
@@ -75,10 +70,7 @@ function Container() {
             return <h1>{selectedCountry}</h1>
         } else if (selectedContinent !== null) {
             return <h1>{selectedContinent}</h1>
-        } else {
-            return <h1>Привет</h1>
         }
-
     }
 
     function renderColumnLeft() {
