@@ -1,7 +1,7 @@
 function Footer() {
     return (
         <footer className="footer">
-            <p><a href={"/"}>какая-то ссылка</a></p>
+            <p>2023 &copy; Vladimir Blinov</p>
         </footer>
     );
 }
