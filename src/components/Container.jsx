@@ -29,13 +29,13 @@ function Container() {
         setJsonData(data);
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         setContinents()
     }, [jsonData]);
 
     function setContinents() {
-        if (jsonData){
-          setSelectedContinents(Object.keys(jsonData[0].continents))
+        if (jsonData) {
+            setSelectedContinents(Object.keys(jsonData[0].continents))
         }
     }
 
@@ -49,9 +49,8 @@ function Container() {
     }
 
 
-
     function renderMenu() {
-        if (selectedContinents !== null){
+        if (selectedContinents !== null) {
             return <ul>
                 {selectedContinents.map((continent) => (
                     <li key={continent}>
@@ -90,18 +89,27 @@ function Container() {
                 <p>
                     {shortInfo}
                 </p>
+                <div  className="aBack">
+                    <a onClick={handleBackCity}>Назад</a>
+                </div>
             </div>
+
         }
         if (selectedContinent !== null && selectedCities !== null) {
-            return <ul>
-                {selectedCities.map((city) => (
-                    <li key={city}>
-                        <a onClick={() => handleCity(city)}>
-                            {city}
-                        </a>
-                    </li>
-                ))}
-            </ul>
+            return <>
+                <ul>
+                    {selectedCities.map((city) => (
+                        <li key={city}>
+                            <a onClick={() => handleCity(city)}>
+                                {city}
+                            </a>
+                        </li>
+                    ))}
+                </ul>
+                <div  className="aBack">
+                    <a onClick={handleBackCountry}>Назад</a>
+                </div>
+            </>
         }
         if (selectedContinent !== null) {
             return <ul>
@@ -154,8 +162,23 @@ function Container() {
 
     }
 
+    function handleBackCity() {
+        setSelectedCity(null);
+        setSelectedCities(Object.keys(jsonData[0].continents[selectedContinent].countries[selectedCountry].cities));
+        setPopulation('');
+        setArea('');
+        setFoundation('');
+        setShortInfo('');
+    }
+
+    function handleBackCountry() {
+        setSelectedCities(null);
+        setSelectedCountry(null);
+        setSelectedCity(null);
+    }
+
     function handleCity(value) {
-        if (selectedCountry !== null){
+        if (selectedCountry !== null) {
             setSelectedCity(value);
             setCityId((jsonData[0].continents[selectedContinent].countries[selectedCountry].cities[value].id))
             setPopulation((jsonData[0].continents[selectedContinent].countries[selectedCountry].cities[value].population))
@@ -166,7 +189,7 @@ function Container() {
     }
 
     function handleCountry(value) {
-        if (selectedContinent !== null){
+        if (selectedContinent !== null) {
             setSelectedCountry(value);
             setSelectedCities(Object.keys(jsonData[0].continents[selectedContinent].countries[value].cities))
             setPopulation(jsonData[0].continents[selectedContinent].countries[value].population)
@@ -176,7 +199,7 @@ function Container() {
     }
 
     function handleContinent(value) {
-        if (selectedContinents !== null){
+        if (selectedContinents !== null) {
             setSelectedContinent(value);
             setSelectedCountries(Object.keys(jsonData[0].continents[value].countries))
             setPopulation(jsonData[0].continents[value].population)
