@@ -24,7 +24,7 @@ function Container() {
     }, []);
 
     async function fetchData() {
-        const response = await fetch('http://92.53.120.202/');
+        const response = await fetch('http://geo.vladimirblinov.ru/');
         const data = await response.json();
         setJsonData(data);
     }
