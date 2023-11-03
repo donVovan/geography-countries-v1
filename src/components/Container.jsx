@@ -24,7 +24,7 @@ function Container() {
     }, []);
 
     async function fetchData() {
-        const response = await fetch('http://localhost:80/');
+        const response = await fetch('http://localhost:27017/');
         const data = await response.json();
         setJsonData(data);
     }
