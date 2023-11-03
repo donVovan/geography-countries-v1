@@ -24,7 +24,7 @@ function Container() {
     }, []);
 
     async function fetchData() {
-        const response = await fetch('http://92.53.120.202/test/');
+        const response = await fetch('http://92.53.120.202:27017/test/');
         const data = await response.json();
         setJsonData(data);
     }
