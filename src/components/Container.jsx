@@ -24,7 +24,7 @@ function Container() {
     }, []);
 
     async function fetchData() {
-        const response = await fetch('http://geo.vladimirblinov.ru/');
+        const response = await fetch('/');
         const data = await response.json();
         setJsonData(data);
     }
