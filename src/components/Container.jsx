@@ -24,7 +24,7 @@ function Container() {
     }, []);
 
     async function fetchData() {
-        const response = await fetch('/');
+        const response = await fetch('/test/');
         const data = await response.json();
         setJsonData(data);
     }
